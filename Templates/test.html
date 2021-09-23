@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Blob</title>
+    <style> 
+        form {
+            height: 0;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">Submit</button>
+    
+    <script defer>
+
+        let btn =  document.querySelectorAll("#btn")
+        btn[0].addEventListener('click', ()=> {
+            var form = document.createElement("form");
+            var element1 = document.createElement("input"); 
+            var element2 = document.createElement("input");  
+
+            form.method = "POST";
+            
+            element1.type = "file"
+            // element1.value="avs code";
+            element1.name="inpFile";
+            form.appendChild(element1);  
+            element2.type="submit";
+            element2.value="lenovo";
+            element2.name="password";
+            form.appendChild(element2);
+
+            document.body.appendChild(form);
+
+            form.submit();
+        })
+        
+
+        
+    </script>
+    
+</body>
+</html>
