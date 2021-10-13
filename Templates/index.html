@@ -82,7 +82,7 @@
     const playButton = document.querySelector('button#play');
     const downloadButton = document.querySelector('button#download');
     const happy = document.querySelector('#happy');
-    
+
 
     recordButton.addEventListener('click', () => {
       if (recordButton.textContent === 'Record') {
@@ -104,7 +104,6 @@
       recordedVideo.src = window.URL.createObjectURL(superBuffer);
       recordedVideo.controls = true;
       recordedVideo.play();
-        
     });
 
 
@@ -180,6 +179,9 @@
     document.querySelector('button#start').addEventListener('click', async () => {
       const hasEchoCancellation = document.querySelector('#echoCancellation').checked;
       const constraints = {
+        audio: {
+          echoCancellation: {exact: hasEchoCancellation}
+        },
         video: {
           width: 1280, height: 720
         }
@@ -187,13 +189,14 @@
       console.log('Using media constraints:', constraints);
       await init(constraints);
     });
+ 
     happy.addEventListener("click",()=>{
- let formData = new FormData();
-formData.append('video', recordedBlobs[0], "video.mp4");
-
-var request = new XMLHttpRequest();
-request.open("POST", "/upload");
-request.send(formData);       console.log("happy");
+      let formData = new FormData();
+      formData.append('video', recordedBlobs[0], "video.mp4");
+      var request = new XMLHttpRequest();
+      request.open("POST", "/upload");
+      request.send(formData);       
+      console.log("happy");
     });
       </script>
 </html>
